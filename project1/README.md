@@ -1,6 +1,4 @@
-project1
-========
-# Implementing a multi-client echo startServer
+# Project 1: Multi-client echo server
 
 This repository contains the instructions and the starter code that you will use as the basis of your multi-client echo server implementation. It also contains the tests that we will use to test your implementation, and an example 'server runner' binary that you might find useful for your own testing purposes.
 
@@ -12,9 +10,9 @@ Your multi-client echo server must have the following characteristics:
 
 1. The server must manage and interact with its clients concurrently using goroutines and channels. Multiple clients should be able to connect/disconnect to the server simultaneously.
 
-2. The server should assume that all messages are line-oriented, separated by newline (\n) characters. When the server reads a newline-terminated message from a client, it must respond by writing that exact message (up to and including the newline character) to all connected clients, including the client that sent the message.
+2. The server should assume that all messages are line-oriented, separated by newline (`\n`) characters. When the server reads a newline-terminated message from a client, it must respond by writing that exact message (up to and _including_ the newline character) to all connected clients, including the client that sent the message.
 
-3. The server must be responsive to slow-reading clients. To better understand what this means, consider a scenario in which a client does not call Read for an extended period of time. If during this time the server continues to write messages to the client’s TCP connection, eventually the TCP connection’s output buffer will reach maximum capacity and subsequent calls to Write made by the server will block.
+3. The server must be responsive to slow-reading clients. To better understand what this means, consider a scenario in which a client does not call Read for an extended period of time. If during this time the server continues to write messages to the client’s TCP connection, eventually the TCP connection’s output buffer will reach maximum capacity and subsequent calls to `Write` made by the server will block.
 To handle these cases, your server should keep a queue of at most 100 outgoing messages to be written to the client at a later time. Messages sent to a slow-reading client whose outgoing message buffer has reached the maximum capacity of 100 should simply be dropped. If the slow-reading client starts reading again later on, the server should make sure to write any buffered messages in its queue back to the client. (Hint: use a buffered channel to implement this property).
 
 ## Requirements
@@ -25,11 +23,11 @@ This project is intentionally open-ended and there are many possible solutions. 
 
 2. Your code may not use locks and mutexes. All synchronization must be done using goroutines, channels, and Go’s channel-based select statement (not to be confused with the low-level socket select that you might use in C, which is also not allowed).
 
-3. You may only use the following packages: bufio, fmt, net, and strconv.
+3. You may only use the following packages: `bufio`, `fmt`, `net`, and `strconv`.
 
-4. You must format your code using go fmt and must follow Go’s standard naming conventions. See the [Formatting](https://golang.org/doc/effective_go.html#formatting) and [Names](https://golang.org/doc/effective_go.html#names) sections of Effective Go for details.
+4. You must format your code using `go fmt` and must follow Go’s standard naming conventions. See the [Formatting](https://golang.org/doc/effective_go.html#formatting) and [Names](https://golang.org/doc/effective_go.html#names) sections of Effective Go for details.
 
-We don’t expect your solutions to be overly-complicated. As a reference, our sample solution is a little over 100 lines including sparse comments and whitespace. We do, however, highly recommend that you familiarize yourself with Go’s concurrency model before beginning the assignment. For additional resources, check out the course lecture notes and the Go-related posts on Piazza.
+We don’t expect your solutions to be overly-complicated. As a reference, our sample solution is a little over 100 lines including sparse comments and whitespace. We do, however, _highly recommend_ that you familiarize yourself with Go’s concurrency model before beginning the assignment.
 
 ## The starter code
 
