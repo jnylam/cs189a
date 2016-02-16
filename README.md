@@ -12,7 +12,8 @@ To clone the repository, go to this directory and run
 git clone https://github.com/jnylam/cs189a
 ```
 
-When new code is added to this repo, you can update your local copy with the `git update` command:
+When new code is added to this repo, you can update your local copy with the `git update` command
+
 ```sh
 cd $GOPATH/src/github.com/jnylam/cs189a
 git update

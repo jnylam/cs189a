@@ -31,15 +31,15 @@ We don’t expect your solutions to be overly-complicated. As a reference, our s
 
 ## The starter code
 
-To download the code for this class, follow [these instructions](https://github.com/jnylam/cs189a)
+To download the code for this class, follow [these instructions](https://github.com/jnylam/cs189a).
 
 The starter code for this project, which is under `$GOPATH/src/github.com/jnylam/cs189a/project1`, consists of the following files:
 
-1. server_impl.go is the only file you should modify, and is where you will add your code as you implement your multi-client echo server.
+1. `server_impl.go` is the only file you should modify, and is where you will add your code as you implement your multi-client echo server.
 
-2. server_api.go contains the interface and documentation for the MultiEchoServer you will be implementing in this project. You should not modify this file.
+2. `server_api.go` contains the interface and documentation for the MultiEchoServer you will be implementing in this project. You should not modify this file.
 
-3. server_test.go contains the tests that we will run to grade your submission.
+3. `server_test.go` contains the tests that we will run to grade your submission.
 
 If at any point you have any trouble with building, installing, or testing your code, the article
 titled [How to Write Go Code](http://golang.org/doc/code.html) is a great resource for understanding
