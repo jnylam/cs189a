@@ -1,6 +1,6 @@
 # Project 1: Multi-client echo server
 
-This repository contains the instructions and the starter code that you will use as the basis of your multi-client echo server implementation. It also contains the tests that we will use to test your implementation, and an example 'server runner' binary that you might find useful for your own testing purposes.
+This subrepository contains the instructions and the starter code that you will use as the basis of your multi-client echo server implementation. It also contains the tests that we will use to test your implementation, and an example 'server runner' binary that you might find useful for your own testing purposes.
 
 The goal of this assignment is to get up to speed on the Go programming language and to help remind you about the basics of socket programming. In this assignment you will implement a simple multi-client echo server in Go: every message sent by a client should be echoed to all connected clients.
 
@@ -31,7 +31,9 @@ We don’t expect your solutions to be overly-complicated. As a reference, our s
 
 ## The starter code
 
-The starter code consists of the following files:
+To download the code for this class, follow [these instructions](https://github.com/jnylam/cs189a)
+
+The starter code for this project, which is under `$GOPATH/src/github.com/jnylam/cs189a/project1`, consists of the following files:
 
 1. server_impl.go is the only file you should modify, and is where you will add your code as you implement your multi-client echo server.
 
@@ -77,7 +79,7 @@ simply creates an instance of your server, starts it on a default port, and bloc
 running your server in the background.
 
 To compile and build the `srunner` program into a binary that you can run, execute the three
-commands below (these directions assume you have cloned this repo to  `$GOPATH/src/githbub.com/jnylam/cs189a`):
+commands below:
 
 ```bash
 $ go install github.com/jnylam/cs189a/project1/srunner
