@@ -77,7 +77,7 @@ simply creates an instance of your server, starts it on a default port, and bloc
 running your server in the background.
 
 To compile and build the `srunner` program into a binary that you can run, execute the three
-commands below (these directions assume you have cloned this repo to `$HOME/p0`):
+commands below (these directions assume you have cloned this repo to  `$GOPATH/src/githbub.com/jnylam/cs189a`):
 
 ```bash
 $ go install github.com/jnylam/cs189a/project1/srunner
