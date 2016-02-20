@@ -23,7 +23,7 @@ This project is intentionally open-ended and there are many possible solutions. 
 
 2. Your code may not use locks and mutexes. All synchronization must be done using goroutines, channels, and Go’s channel-based select statement (not to be confused with the low-level socket select that you might use in C, which is also not allowed).
 
-3. You may only use the following packages: `bufio`, `fmt`, `net`, and `strconv`.
+3. You may only use the following packages: `bufio`, `fmt`, `net`, `os`, and `strconv`.
 
 4. You must format your code using `go fmt` and must follow Go’s standard naming conventions. See the [Formatting](https://golang.org/doc/effective_go.html#formatting) and [Names](https://golang.org/doc/effective_go.html#names) sections of Effective Go for details.
 
