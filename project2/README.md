@@ -533,7 +533,7 @@ Before you begin the project, you should read and understand all of the starter 
 godoc -http=:6060 &
 ```
 
-Then, navigate to [localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp](localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp) in a browser.
+Then, navigate to [localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp](http://localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp) in a browser.
 Note that you can execute this command from anywhere in your system.
 
 ## Acknowledgments
