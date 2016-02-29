@@ -536,6 +536,6 @@ godoc -http=:6060 &
 Then, navigate to <localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp> in a browser.
 Note that you can execute this command from anywhere in your system.
 
-## Acknowledgements
+## Acknowledgments
 
 This assignment is based on a project given as part of [Distributed Systems](http://www.cs.cmu.edu/~dga/15-440/S14/index.html) taught by David Andersen and Srini Seshan.
