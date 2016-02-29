@@ -13,30 +13,30 @@ Table of contents:
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Part A: LSP protocol](#part-a-lsp-protocol)
-	- [LSP Overview](#lsp-overview)
+	- [LSP overview](#lsp-overview)
 		- [Establishing a connection](#establishing-a-connection)
 		- [Sending and acknowledging data](#sending-and-acknowledging-data)
 		- [Epoch events](#epoch-events)
 	- [LSP API](#lsp-api)
-		- [LSP Messages](#lsp-messages)
-		- [LSP Parameters](#lsp-parameters)
-		- [LSP Client API](#lsp-client-api)
-		- [LSP Server API](#lsp-server-api)
-	- [Starter Code](#starter-code)
+		- [LSP messages](#lsp-messages)
+		- [LSP parameters](#lsp-parameters)
+		- [LSP client API](#lsp-client-api)
+		- [LSP server API](#lsp-server-api)
+	- [Starter code](#starter-code)
 	- [Testing your code using `srunner` and `crunner`](#testing-your-code-using-srunner-and-crunner)
 	- [Running the tests](#running-the-tests)
 	- [Submitting part A](#submitting-part-a)
 - [Part B: Distributed Bitcoin miner](#part-b-distributed-bitcoin-miner)
-	- [Bitcoin Overview](#bitcoin-overview)
-	- [System Architecture](#system-architecture)
+	- [Bitcoin overview](#bitcoin-overview)
+	- [System architecture](#system-architecture)
 		- [Sequence of events](#sequence-of-events)
 		- [Handling failures](#handling-failures)
 	- [Starter code](#starter-code)
 	- [Importing the `bitcoin` package](#importing-the-bitcoin-package)
 	- [Compiling the `client`, `miner` and `server` programs](#compiling-the-client-miner-and-server-programs)
 	- [Submitting part B](#submitting-part-b)
-- [Project Requirements](#project-requirements)
-- [Reading the API Documentation](#reading-the-api-documentation)
+- [Project requirements](#project-requirements)
+- [Reading the API documentation](#reading-the-api-documentation)
 - [Acknowledgments](#acknowledgments)
 
 <!-- /TOC -->
@@ -64,7 +64,7 @@ Your task for Part A of this project is to implement the Live Sequence Protocol 
 
 The following sections will describe LSP in-depth. We begin by describing the protocol in terms of the messages that flow between the server and its clients.
 
-### LSP Overview
+### LSP overview
 
 In LSP, communication between a server and client consists of a sequence of discrete messages sent in each direction. Each message sent over an LSP connection is made up of the following four values:
 
@@ -143,7 +143,7 @@ We will now describe LSP from the perspective of a Go programmer. You must imple
 
 The LSP API can be found in the `lsp` package (included as part of the starter code). This file defines several exported structs, interfaces, and constants, and also provides detailed documentation describing the intent and expected behavior of every aspect of the API. Consult it regularly!
 
-#### LSP Messages
+#### LSP messages
 
 The different LSP message types are defined as integer constants below:
 ```go
@@ -168,7 +168,7 @@ type Message struct {
 
 To send a `Message` over the network, you must first convert the structure to a UDP packet by marshalling it into a sequence of bytes. This can be done in Go using the `Marshal` function in the `json` package.
 
-#### LSP Parameters
+#### LSP parameters
 
 For both the client and the server, the API provides a mechanism to specify the epoch limit _K_, the epoch duration _d_, and the sliding window size _w_ when a client or server is first created. These parameters are encapsulated in the following `struct`:
 
@@ -180,7 +180,7 @@ type Params struct {
 }
 ```
 
-#### LSP Client API
+#### LSP client API
 
 An application calls `the NewClient` to set up and initiate the activities of a client. The function blocks until a connection with the server has been made, and returns a non-`nil` error if the connection could not be established. The function is declared as follows:
 
@@ -209,7 +209,7 @@ A few other details are worth noting:
 
 For detailed documentation describing the intent and expected behavior of each function and method, consult the `client_api.go` and `client_impl.go` files.
 
-#### LSP Server API
+#### LSP server API
 
 The API for the server is similar to that for an LSP client, with a few minor di↵erences. An application calls the `NewServer` to set up and initiate a LSP server. However, unlike `NewClient`, this function should not block. Instead, it should simply begin listening on the specified port and spawn one or more goroutines to handle things like accepting incoming client connections, triggering epoch events at fixed intervals, etc. If there is a problem setting up the server, the function should return a non-`nil` error. The function is declared as follows:
 
@@ -238,7 +238,7 @@ A few other details are worth noting:
 
 For detailed documentation describing the intent and expected behavior of each function and method, consult the `server_api.go` and `server_impl.go` files.
 
-### Starter Code
+### Starter code
 
 To download or update the codebase for this class, follow [these instructions](https://github.com/jnylam/cs189a).
 
@@ -322,7 +322,7 @@ tar -cvf lsp.tar lsp/
 
 In part B of this project, you will implement a simple distributed system using your LSP implementation you wrote in part A. Your system will harness the power of multiple processors to speed up a compute-intensive task and will be capable of recovering from sudden machine failures.
 
-### Bitcoin Overview
+### Bitcoin overview
 
 Bitcoin is a decentralized digital currency. At the heart of the Bitcoin protocol is a replay prevention mechanism that prevents participants from double spending Bitcoins. The replay prevention mechanism uses a cryptographic proof-of-work function that is designed to be computationally hard to execute. Clients compete to be the first to find a solution to the proof-of-work in order to get their signature attached to a sequence of transactions. If a client wins, they are rewarded with Bitcoins. The process of finding a solution to the proof-of-work is called mining.
 
@@ -338,7 +338,7 @@ One simple approach to completing this task is to perform a brute-force search, 
 
 Your task for this project is to implement a simple distributed system to perform this task. We discuss our proposed system design in the next section.
 
-### System Architecture
+### System architecture
 
 Your distributed system will consist of the following three components:
 
@@ -514,7 +514,7 @@ cd $GOPATH/src/jnylam/cs189a/project2/
 tar -cvf project2.tar project2/
 ```
 
-## Project Requirements
+## Project requirements
 
 As you write your code for this project, also keep in mind the following requirements:
 
@@ -525,7 +525,7 @@ As you write your code for this project, also keep in mind the following require
 * You may assume that the UDP packets will not be corrupted, and that you do not need to check your messages for proper formatting (unless, of course, you want to defend against your own programming errors).
 * You must format your code using `go fmt` and must follow Go’s standard naming conventions. See the [Formatting](https://golang.org/doc/effective_go.html#formatting) and [Names](https://golang.org/doc/effective_go.html#names) sections of Effective Go for details.
 
-## Reading the API Documentation
+## Reading the API documentation
 
 Before you begin the project, you should read and understand all of the starter code we provide. To make this experience a little less traumatic (we know, it's a lot :P), fire up a web server and read the documentation in a browser by executing the following command:
 
@@ -533,7 +533,7 @@ Before you begin the project, you should read and understand all of the starter 
 godoc -http=:6060 &
 ```
 
-Then, navigate to <localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp> in a browser.
+Then, navigate to [localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp](localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp) in a browser.
 Note that you can execute this command from anywhere in your system.
 
 ## Acknowledgments
