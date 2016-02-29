@@ -1,13 +1,8 @@
-# Project 2: Distributed bitcoin miner
+# Project 2: Distributed Bitcoin miner
 
-This repository contains the instructions and the starter code for project 2. It also contains the tests that we will use to grade your implementation, and two simple echo server/client (`srunner` and `crunner`, respectively) programs that you might find useful for your own testing purposes. These instructions assume you have set your `GOPATH` to point to the repository's
-root `project2/` directory.
+This repository contains the instructions and the starter code for project 2. It also contains the tests that we will use to grade your implementation, and two simple echo server/client (`srunner` and `crunner`, respectively) programs that you might find useful for your own testing purposes. These instructions assume you have followed [these instructions](https://github.com/jnylam/cs189a) to install the course's repository.
 
-If at any point you have any trouble with building, installing, or testing your code, the article
-titled [How to Write Go Code](http://golang.org/doc/code.html) is a great resource for understanding
-how Go workspaces are built and organized. You might also find the documentation for the
-[`go` command](http://golang.org/cmd/go/) to be helpful. As always, feel free to post your questions
-on Piazza.
+If at any point you have any trouble with building, installing, or testing your code, the article titled [How to Write Go Code](http://golang.org/doc/code.html) is a great resource for understanding how Go workspaces are built and organized. You might also find the documentation for the [`go` command](http://golang.org/cmd/go/) to be helpful. As always, feel free to post your questions on Piazza.
 
 This project will consist of the following two parts:
 
@@ -17,41 +12,32 @@ This project will consist of the following two parts:
 Table of contents:
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Project 2: Distributed bitcoin miner](#project-2-distributed-bitcoin-miner)
-	- [Part A: LSP protocol](#part-a-lsp-protocol)
-		- [LSP Overview](#lsp-overview)
-			- [Establishing a connection](#establishing-a-connection)
-			- [Sending and acknowledging data](#sending-and-acknowledging-data)
-			- [Epoch events](#epoch-events)
-		- [LSP API](#lsp-api)
-			- [LSP Messages](#lsp-messages)
-			- [LSP Parameters](#lsp-parameters)
-			- [LSP Client API](#lsp-client-api)
-			- [LSP Server API](#lsp-server-api)
-		- [Starter Code](#starter-code)
-		- [Testing your code using `srunner` and `crunner`](#testing-your-code-using-srunner-and-crunner)
-		- [Running the tests](#running-the-tests)
-		- [Submitting part A](#submitting-part-a)
-	- [Part B: Distributed Bitcoin miner](#part-b-distributed-bitcoin-miner)
-		- [Bitcoin Overview](#bitcoin-overview)
-		- [System Architecture](#system-architecture)
-			- [Sequence of events](#sequence-of-events)
-			- [Handling failures](#handling-failures)
-		- [Starter code](#starter-code)
-		- [Importing the `bitcoin` package](#importing-the-bitcoin-package)
-		- [Compiling the `client`, `miner` and `server` programs](#compiling-the-client-miner-and-server-programs)
-- [Compile the client, miner, and server programs. The resulting binaries](#compile-the-client-miner-and-server-programs-the-resulting-binaries)
-- [will be located in the $GOPATH/bin directory.](#will-be-located-in-the-gopathbin-directory)
-- [Start the server, specifying the port to listen on.](#start-the-server-specifying-the-port-to-listen-on)
-- [Start a miner, specifying the server's host:port.](#start-a-miner-specifying-the-servers-hostport)
-- [Start the client, specifying the server's host:port, the message](#start-the-client-specifying-the-servers-hostport-the-message)
-- ["bradfitz", and max nonce 9999.](#bradfitz-and-max-nonce-9999)
-		- [Running the tests](#running-the-tests)
-- [Run ctest on a Mac OS X machine in non-verbose mode.](#run-ctest-on-a-mac-os-x-machine-in-non-verbose-mode)
-- [Run mtest on a Linux machine in verbose mode.](#run-mtest-on-a-linux-machine-in-verbose-mode)
-		- [Submitting part B](#submitting-part-b)
-	- [Project Requirements](#project-requirements)
-	- [Reading the API Documentation](#reading-the-api-documentation)
+- [Part A: LSP protocol](#part-a-lsp-protocol)
+	- [LSP Overview](#lsp-overview)
+		- [Establishing a connection](#establishing-a-connection)
+		- [Sending and acknowledging data](#sending-and-acknowledging-data)
+		- [Epoch events](#epoch-events)
+	- [LSP API](#lsp-api)
+		- [LSP Messages](#lsp-messages)
+		- [LSP Parameters](#lsp-parameters)
+		- [LSP Client API](#lsp-client-api)
+		- [LSP Server API](#lsp-server-api)
+	- [Starter Code](#starter-code)
+	- [Testing your code using `srunner` and `crunner`](#testing-your-code-using-srunner-and-crunner)
+	- [Running the tests](#running-the-tests)
+	- [Submitting part A](#submitting-part-a)
+- [Part B: Distributed Bitcoin miner](#part-b-distributed-bitcoin-miner)
+	- [Bitcoin Overview](#bitcoin-overview)
+	- [System Architecture](#system-architecture)
+		- [Sequence of events](#sequence-of-events)
+		- [Handling failures](#handling-failures)
+	- [Starter code](#starter-code)
+	- [Importing the `bitcoin` package](#importing-the-bitcoin-package)
+	- [Compiling the `client`, `miner` and `server` programs](#compiling-the-client-miner-and-server-programs)
+	- [Submitting part B](#submitting-part-b)
+- [Project Requirements](#project-requirements)
+- [Reading the API Documentation](#reading-the-api-documentation)
+- [Acknowledgments](#acknowledgments)
 
 <!-- /TOC -->
 
@@ -549,3 +535,7 @@ godoc -http=:6060 &
 
 Then, navigate to <localhost:6060/pkg/github.com/jnylam/cs189a/project2/lsp> in a browser.
 Note that you can execute this command from anywhere in your system.
+
+## Acknowledgements
+
+This assignment is based on a project given as part of [Distributed Systems](http://www.cs.cmu.edu/~dga/15-440/S14/index.html) taught by David Andersen and Srini Seshan.
